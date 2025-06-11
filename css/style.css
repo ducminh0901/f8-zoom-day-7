@@ -75,21 +75,90 @@ h6 {
 }
 .header .nav {
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
-.header .nav a {
-    padding: 15px 20px;
+.header .nav li {
+    position: relative;
+}
+.nav > li > a {
+    padding: 20px 20px;
     font-family: var(--font-heading);
-    font-size: 1.5rem;
     font-weight: 700;
     color: #fff;
 }
+
+.nav > li:hover .sub-nav {
+    display: block;
+}
+.sub-nav {
+    position: absolute;
+    top: 35px;
+    left: -5px;
+    display: none;
+    background-color: #fff;
+    width: 220px;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0px 13px 25px -12px rgba(0, 0, 0, 0.25);
+}
+.sub-nav li:hover {
+    background-color: #b80257;
+    padding-left: 5px;
+    transition: all 0.3s ease-in-out;
+}
+.sub-nav li:hover a {
+    color: #fff;
+    transition: all 0.4s ease-in-out;
+}
+.sub-nav a {
+    display: block;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 45px;
+    padding: 0 0 0 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
 .user-actions {
     display: flex;
+    position: relative;
 }
 .user-actions .action-btn {
     padding: 14px;
     color: #fff;
+    cursor: pointer;
+}
+/* Open search */
+
+.user-actions form {
+    position: absolute;
+    display: none;
+    height: 55px;
+    width: 280px;
+    padding: 5px;
+    right: 25px;
+    top: 40px;
+    background: #fff;
+}
+.user-actions input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ececec;
+    padding: 0 49px 0 10px;
+}
+.user-actions .search-drop {
+    width: 48px;
+    color: #fff;
+    background: #b80257;
+    border: 1px solid #fff;
+    border-left: none;
+    line-height: 45px;
+    position: absolute;
+    top: 4px;
+    right: 5px;
+}
+.user-actions .user-action-open:checked ~ .search-form {
+    display: block;
 }
 .hero {
     display: flex;
@@ -114,6 +183,7 @@ h6 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     margin-top: 20px;
+    color: rgba(255, 255, 255, 0.8);
 }
 .breadcrumbs li + li::before {
     content: " / ";
@@ -157,7 +227,23 @@ h6 {
 .single-course img {
     display: block;
 }
-
+.single-course .image {
+    width: 270px;
+    position: relative;
+    overflow: hidden;
+}
+.single-course .trend {
+    position: absolute;
+    font-size: 15px;
+    width: 140px;
+    height: 90px;
+    color: #fff;
+    top: -44px;
+    right: -72px;
+    padding: 64px 0 0 53px;
+    background-color: #b80257;
+    transform: rotate(35deg);
+}
 .courses-list .text {
     width: 270px;
     display: flex;
@@ -299,7 +385,7 @@ h6 {
 .footer {
     width: 100%;
     display: flex;
-    background-color: #000;
+    background-color: #151515;
     padding: 80px 0 160px;
 }
 .inner-footer {
@@ -307,6 +393,7 @@ h6 {
     justify-content: space-around;
     max-width: 1200px;
     margin: 0 auto;
+    gap: 30px;
 }
 
 .footer h6 {
@@ -317,11 +404,14 @@ h6 {
 }
 .col-list-footer {
     color: rgba(255, 255, 255, 0.6);
-    flex-basis: 20%;
+    flex-basis: 15%;
 }
 .col-list-footer li a {
     color: rgba(255, 255, 255, 0.6);
     line-height: 30px;
+}
+.col-list-footer li a:hover {
+    color: #b80257;
 }
 .col-list-footer p {
     color: rgba(255, 255, 255, 0.6);
@@ -356,9 +446,10 @@ h6 {
     line-height: 40px;
     border-radius: 20px;
     color: #fff;
+    background-color: #b80257;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    background-color: #b80257;
+    margin-top: 5px;
 }
 .footer-subcribe button:hover {
     color: #b80257;
