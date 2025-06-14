@@ -14,6 +14,10 @@ body {
     font-family: "Source Sans Pro", sans-serif;
     color: rgba(0, 0, 0, 0.7);
 }
+html,
+body {
+    scroll-behavior: smooth;
+}
 input,
 button,
 textarea,
@@ -86,29 +90,33 @@ h6 {
     font-weight: 700;
     color: #fff;
 }
-
 .nav > li:hover .sub-nav {
-    display: block;
+    opacity: 1;
+    transform: scaleY(1);
 }
 .sub-nav {
     position: absolute;
     top: 35px;
     left: -5px;
-    display: none;
+    opacity: 0;
     background-color: #fff;
     width: 220px;
     padding: 0;
     margin: 0;
     box-shadow: 0px 13px 25px -12px rgba(0, 0, 0, 0.25);
+    transform: scaleY(0);
+    transform-origin: 0 top;
+    transition: transform 0.4s ease-in-out;
+}
+.sub-nav li a {
+    transition: transform 0.3s ease-in-out;
 }
 .sub-nav li:hover {
     background-color: #b80257;
-    padding-left: 5px;
-    transition: all 0.3s ease-in-out;
 }
 .sub-nav li:hover a {
     color: #fff;
-    transition: all 0.4s ease-in-out;
+    transform: translateX(5px);
 }
 .sub-nav a {
     display: block;
@@ -225,12 +233,37 @@ h6 {
     width: 33.33%;
 }
 .single-course img {
+    transition: transform ease-in-out 0.6s;
+}
+.col-course:hover .single-course .image img {
+    transform: scale3D(1.1, 1.1, 1);
+    opacity: 0.8;
+}
+.col-course:hover h6 a {
+    color: #b80257;
+}
+.single-course img {
     display: block;
 }
 .single-course .image {
     width: 270px;
     position: relative;
     overflow: hidden;
+}
+.single-course .image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(40, 172, 225, 0.2));
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+    z-index: 1;
+}
+.single-course .image:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
 }
 .single-course .trend {
     position: absolute;
@@ -260,9 +293,6 @@ h6 {
     color: #464646;
     line-height: 24px;
 }
-.courses-list .text h6 a:hover {
-    color: #b80257;
-}
 .courses-list .text p {
     color: #000;
     line-height: 22px;
@@ -287,8 +317,7 @@ h6 {
 }
 .course-info li a:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 .course-info li a {
     color: #fff;
@@ -297,6 +326,8 @@ h6 {
     border-radius: 30px;
     padding: 0px 20px;
     line-height: 32px;
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
 }
 .course-info .free a {
     background: #783df0;
@@ -488,4 +519,16 @@ h6 {
 
 .lesson:hover {
     background-color: #f0f0f0;
+}
+.scroll-top {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    z-index: 99;
+    text-align: center;
+    color: #fff;
+    background: #b80257;
+    font-size: 20px;
 }
