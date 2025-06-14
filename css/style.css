@@ -233,7 +233,7 @@ h6 {
     width: 33.33%;
 }
 .single-course img {
-    transition: transform ease-in-out 0.6s;
+    transition: all ease-in-out 0.6s;
 }
 .col-course:hover .single-course .image img {
     transform: scale3D(1.1, 1.1, 1);
@@ -249,22 +249,14 @@ h6 {
     width: 270px;
     position: relative;
     overflow: hidden;
+    background-image: -webkit-linear-gradient(
+        90deg,
+        rgb(40, 172, 225) 12%,
+        rgb(81, 204, 231) 50%,
+        rgb(122, 235, 236) 91%
+    );
 }
-.single-course .image::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(40, 172, 225, 0.2));
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
-    z-index: 1;
-}
-.single-course .image:hover::before {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-}
+
 .single-course .trend {
     position: absolute;
     font-size: 15px;
@@ -315,10 +307,7 @@ h6 {
     flex: 1;
     align-items: center;
 }
-.course-info li a:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
+
 .course-info li a {
     color: #fff;
     background-color: #b80257;
@@ -328,6 +317,30 @@ h6 {
     line-height: 32px;
     transform: translateY(0);
     transition: transform 0.3s ease-in-out;
+}
+.course-info li .fee:hover {
+    transform: translateY(-5px);
+}
+.course-info .fee::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 5%;
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    height: 10px;
+    width: 90%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0) 80%
+    );
+    transition: all 0.3s ease-in-out;
+}
+.course-info .fee:hover::before {
+    opacity: 1;
+    top: 115%;
 }
 .course-info .free a {
     background: #783df0;
@@ -401,14 +414,16 @@ h6 {
     font-weight: 700;
     margin: 30px 0 20px;
 }
+.sidebar-courses-list li {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
 .sidebar-courses-list li a {
     display: block;
     line-height: 40px;
     padding-left: 25px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 .sidebar-courses-list li a:hover {
-    padding-left: 35px;
+    transform: translateX(10px);
     color: #783df0;
 }
 
